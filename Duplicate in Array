@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.* ;
+
+import java.util.ArrayList;
+
+public class Solution{
+    public static int findDuplicate(ArrayList<Integer> arr, int n){
+        // Write your code here.
+        HashMap<Integer, Boolean> mp = new HashMap<>();
+        for(int i : arr){
+            if(mp.containsKey(i)) return i;
+            else mp.put(i, true);
+        }
+        return -1;
+    }
+}
