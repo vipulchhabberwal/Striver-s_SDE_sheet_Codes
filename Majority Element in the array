@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.* ;
+import java.util.Map.Entry;
+
+public class Solution {
+	public static int findMajority(int[] arr, int n) {
+    // if only one element present return it.
+		if(n==1) return arr[0];
+    
+    //Creating Hashmap
+		HashMap<Integer, Integer> mp = new HashMap<>();
+		for(int i=0; i<n; i++){
+			if(mp.containsKey(arr[i])){
+				int v = (int)mp.get(arr[i]);
+				mp.put(arr[i], v + 1);
+			}
+			else mp.put(arr[i], 1);
+		}
+    
+    //Count should be greater than floor(count/length) 
+		for(Map.Entry<Integer,Integer> entry : mp.entrySet()){
+            int a = entry.getValue();
+            if(a>(n/2))	return entry.getKey();
+        }
+
+        return -1;
+	}
+}
